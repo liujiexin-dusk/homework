@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小鹏汇天「陆地航母」分体式飞行汽车调研与分析 | 飞行汽车技术基础课程作业</title>
+<style>
+  :root{
+    --bg:#f5f7fa; --card:#ffffff; --ink:#1c2733; --sub:#51606e; --line:#e2e8f0;
+    --brand:#0f6f6b; --brand-2:#148f89; --accent:#e8833a; --soft:#eef6f5; --warn:#fff4e8;
+    --shadow:0 2px 12px rgba(20,60,70,.08);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:"Microsoft YaHei","PingFang SC","Segoe UI",sans-serif;background:var(--bg);color:var(--ink);line-height:1.75}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  header.hero{background:linear-gradient(135deg,#0b4f4c 0%,#148f89 55%,#2bb3a7 100%);color:#fff;padding:56px 0 44px}
+  .hero .tag{display:inline-block;border:1px solid rgba(255,255,255,.45);border-radius:999px;padding:4px 14px;font-size:13px;letter-spacing:.08em;margin-bottom:18px}
+  .hero h1{font-size:32px;line-height:1.35;margin-bottom:14px}
+  .hero p.lead{font-size:16px;max-width:760px;color:#e6f4f3}
+  .meta{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px 26px;font-size:14px;color:#dff0ef}
+  .meta b{color:#fff}
+  nav.toc{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10;box-shadow:var(--shadow)}
+  nav.toc .wrap{display:flex;flex-wrap:wrap;gap:4px 18px;padding-top:12px;padding-bottom:12px;font-size:14px}
+  nav.toc a{color:var(--sub);text-decoration:none;padding:4px 2px;border-bottom:2px solid transparent}
+  nav.toc a:hover{color:var(--brand);border-bottom-color:var(--brand)}
+  section{padding:38px 0 8px}
+  h2{font-size:23px;margin-bottom:18px;padding-left:12px;border-left:5px solid var(--brand)}
+  h3{font-size:17px;margin:22px 0 10px;color:var(--brand)}
+  p{margin-bottom:12px;color:var(--ink)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;box-shadow:var(--shadow);margin-bottom:22px}
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:18px 0}
+  .kpi{background:var(--soft);border-radius:12px;padding:16px;text-align:center}
+  .kpi .num{font-size:24px;font-weight:700;color:var(--brand)}
+  .kpi .lbl{font-size:13px;color:var(--sub);margin-top:4px}
+  table{width:100%;border-collapse:collapse;font-size:14px;margin:14px 0;background:#fff}
+  th,td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+  th{background:var(--soft);color:var(--brand)}
+  tr:nth-child(even) td{background:#fafcfc}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .note{background:var(--warn);border-left:4px solid var(--accent);border-radius:8px;padding:14px 16px;font-size:14px;color:#6b4a26;margin:14px 0}
+  .level{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0}
+  .level .step{border:1px solid var(--line);border-radius:12px;padding:14px;background:#fff}
+  .level .step .h{font-weight:700;color:var(--brand);margin-bottom:6px}
+  ul,ol{padding-left:22px;margin-bottom:12px}
+  li{margin-bottom:6px}
+  .ref{font-size:13px;color:var(--sub)}
+  .ref li{margin-bottom:8px}
+  footer{margin-top:40px;padding:26px 0 40px;color:var(--sub);font-size:13px;border-top:1px solid var(--line)}
+  .badge{display:inline-block;font-size:12px;border-radius:6px;padding:2px 8px;margin-right:6px}
+  .b-demo{background:#e6f4ea;color:#1e7d43}
+  .b-pending{background:#fff4e8;color:#b8651b}
+  .b-block{background:#fdeaea;color:#b33535}
+  @media(max-width:820px){
+    .kpis,.level{grid-template-columns:repeat(2,1fr)}
+    .grid2{grid-template-columns:1fr}
+    .hero h1{font-size:24px}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="tag">飞行汽车技术基础 · 课程作业</span>
+    <h1>小鹏汇天「陆地航母」（X3 / X3-F）分体式飞行汽车：<br>技术可行性、应用场景与市场可行性调研分析</h1>
+    <p class="lead">本作业选取与课程参考案例不同的研究对象：不分析单车跳跃式冷气推力方案，而聚焦中国企业小鹏汇天提出的「地面母舰 + 可收纳飞行体」分体式构型，从系统架构、关键技术、安全适航、场景适配与市场条件五个层面做证据导向的评估。</p>
+    <div class="meta">
+      <span>作者：<b>刘洁馨</b></span>
+      <span>单位：<b>吉林大学</b></span>
+      <span>课程：飞行汽车技术基础</span>
+      <span>证据截止：2026-11-24</span>
+      <span>版本：v1.0</span>
+    </div>
+  </div>
+</header>
+
+<nav class="toc">
+  <div class="wrap">
+    <a href="#summary">执行摘要</a>
+    <a href="#method">研究设计与证据边界</a>
+    <a href="#profile">产品与发展脉络</a>
+    <a href="#arch">系统架构与关键技术</a>
+    <a href="#feasibility">技术可行性分层</a>
+    <a href="#safety">安全与适航</a>
+    <a href="#scenario">应用场景评估</a>
+    <a href="#market">市场可行性</a>
+    <a href="#compare">竞品横向对比</a>
+    <a href="#roadmap">工程化判据</a>
+    <a href="#refs">参考文献</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<section id="summary">
+  <h2>一、执行摘要</h2>
+  <div class="card">
+    <ol>
+      <li><b>产品定位：</b>「陆地航母」由陆行体（三轴六轮增程地面车辆）与飞行体（双座六旋翼双涵道 eVTOL）组成，飞行体机臂与桨叶可折叠收纳于陆行体后备舱，二者可一键自动分离与结合。其设计出发点是把「按汽车标准落地的地面平台」与「按航空器标准取证的飞行平台」解耦，而不是在同一车体上同时完成两套认证。</li>
+      <li><b>技术现状：</b>截至 2026 年 11 月，公开信息可支持的判断是：整机已进入量产试产与受控试飞阶段，飞行体具备垂直起降、折叠收纳与陆行体补能能力；但型号合格证（TC）尚未正式取得，最终面向终端用户的交付节点已由 2026 年底延后至 2027 年，持续飞行包线、高海拔/全天候运行与完整故障安全证据仍需补充。</li>
+      <li><b>路线差异：</b>分体式构型用「工程折中」换取取证分工与存放/移动/补能便利性，代价是增加了对接机构、两套动力与两套维护体系；它与「整机一体式陆空汽车」「纯 eVTOL 空中出租车」属于三条不同的产品逻辑，不能互相套用性能结论。</li>
+      <li><b>场景判断：</b>近期最成立的是限定飞行营地、近郊休闲观光与高端体验场景；城市通勤空中出租车、全天候应急救援与高密度物流在当前证据下并不适配。</li>
+      <li><b>市场判断：</b>累计预售约 7000 台（含中东批量订单）、定价 200 万元以内，属于高客单价、早期小众市场；预售订单不等于确认收入，能否转化取决于适航取证、运行空域、起降场地、保险与服务网络的同步成熟。</li>
+    </ol>
+    <div class="kpis">
+      <div class="kpi"><div class="num">2 座</div><div class="lbl">飞行体乘员</div></div>
+      <div class="kpi"><div class="num">6 旋翼</div><div class="lbl">六轴六桨双涵道</div></div>
+      <div class="kpi"><div class="num">≤200 万</div><div class="lbl">定价区间（人民币）</div></div>
+      <div class="kpi"><div class="num">~7000</div><div class="lbl">累计预售订单（台）</div></div>
+    </div>
+    <div class="note">说明：以上数字来自企业公开发布、媒体报道与行业资料，属企业自证或报道口径；本作业不把预售量直接等同于交付量，也不把演示飞行等同于已获适航批准的商业运行。</div>
+  </div>
+</section>
+
+<section id="method">
+  <h2>二、研究设计与证据边界</h2>
+  <div class="card">
+    <h3>2.1 研究方法</h3>
+    <p>本文采用「案例式工程评估」思路：先界定研究对象与任务剖面，再按公开来源分级整理证据，分别评估技术可行性、运行场景与市场条件。不做跨企业的统一性能均值排名，也不依据营销话术推定未公开的飞行包线。</p>
+    <h3>2.2 来源分级</h3>
+    <table>
+      <tr><th>来源类别</th><th>可支持的结论</th><th>不能支持的结论</th></tr>
+      <tr><td>企业官网 / 官方发布会 / 官方新闻稿</td><td>产品构型、版本规划、企业宣称指标、订单口径</td><td>适航符合性、独立可靠性、安全裕度</td></tr>
+      <tr><td>第三方媒体与行业报道</td><td>时间线交叉核验、订单与交付进展、争议点</td><td>未经官方确认的参数、续航与速度细节</td></tr>
+      <tr><td>民航局文件 / 适航标准 / 行业路线图</td><td>审定框架、安全目标、电池与环境要求</td><td>某一具体型号已满足全部条款</td></tr>
+      <tr><td>本文推算与类比</td><td>数量级判断、风险方向</td><td>官方规格、认证结论或财务预测</td></tr>
+    </table>
+    <h3>2.3 纳入与排除标准</h3>
+    <ul>
+      <li>纳入：与陆地航母 X3 / X3-F 直接相关的公开资料；可解释分体构型、电推进、动力电池、适航路径与场景运营的标准与文献。</li>
+      <li>排除：无出处的网络参数传闻；把概念渲染图、粉丝设想当成已实现产品；用「万亿低空经济」直接折算单款车型销量的材料。</li>
+    </ul>
+  </div>
+</section>
+
+<section id="profile">
+  <h2>三、产品与发展脉络</h2>
+  <div class="card">
+    <p>小鹏汇天（ARIDGE，原小鹏汇天）成立于 2013 年，2020 年获小鹏战略投资控股，定位低空产品研发与制造。其产品战略分三步：先以分体式飞行汽车在城市周边休闲场景落地，再以全倾转混电机型承担城际通勤，最终探索陆空一体式门到门交通。「陆地航母」对应第一步产品。</p>
+    <div class="grid2">
+      <div>
+        <h3>陆行体（地面「母舰」）</h3>
+        <ul>
+          <li>三轴六轮、6×6 全轮驱动，后轮转向与空气悬架；</li>
+          <li>800V 碳化硅增程动力平台，CLTC 综合续航超 1000 km；</li>
+          <li>可停入标准车位、可下地库，行驶中/停车时均可为飞行体补能，满油满电支持约 6 次飞行；</li>
+          <li>承担飞行体的运输、存放与移动充电站角色。</li>
+        </ul>
+      </div>
+      <div>
+        <h3>飞行体（X3-F）</h3>
+        <ul>
+          <li>双座智能座舱，270° 全景视野；</li>
+          <li>六轴六桨双涵道构型，桨叶与机臂可折叠；</li>
+          <li>电动垂直起降，配备三套飞控与导航系统、全权限电传飞控与电子围栏；</li>
+          <li>车身主体结构与桨叶采用碳纤维材料，兼顾强度与轻量化。</li>
+        </ul>
+      </div>
+    </div>
+    <h3>关键时间线（公开口径）</h3>
+    <table>
+      <tr><th>时间</th><th>事件</th><th>证据性质</th></tr>
+      <tr><td>2024-03</td><td>飞行体 X3-F 型号合格证（TC）申请获民航中南地区管理局受理</td><td>监管受理记录</td></tr>
+      <tr><td>2024-11</td><td>完成全球公开载人首飞；发布「先飞码」超前预订</td><td>企业发布 + 媒体报道</td></tr>
+      <tr><td>2025-01</td><td>CES 海外首秀，公开披露预售超 3000 台</td><td>企业发布</td></tr>
+      <tr><td>2025-05</td><td>生产许可证（PC）申请获受理，量产体系接受局方审查</td><td>监管受理记录</td></tr>
+      <tr><td>2026-03</td><td>广州量产工厂完成 5 台飞行器同日批量试产下线并开展多机试飞；航空级动力电池量产下线</td><td>企业/供应商发布</td></tr>
+      <tr><td>2026-04</td><td>北京车展累计预售约 7000 台，单日订单破 90 台</td><td>媒体报道</td></tr>
+      <tr><td>2026-07</td><td>列入民航局首批 eVTOL 适航快速合规审查名单，TC 仍未正式颁发</td><td>监管名单 + 行业资料</td></tr>
+      <tr><td>2026-10</td><td>首架 X3-F 试验用机交付阿联酋，在当地民航监管下开展沙盒试运行；中东批量订单约 600 台</td><td>媒体报道</td></tr>
+      <tr><td>2026-09 起</td><td>公开口径显示终端客户交付延后至 2027 年</td><td>行业资料/媒体</td></tr>
+    </table>
+  </div>
+</section>
+
+<section id="arch">
+  <h2>四、系统架构与关键技术</h2>
+  <div class="card">
+    <h3>4.1 总体架构：两个平台、一条对接接口</h3>
+    <p>分体方案把整车拆成「陆行体子系统」与「飞行体子系统」，二者之间的接口包括机械锁定、电气/高压补能、通信与状态互锁。这样划分的工程意义是：陆行体按道路车辆逻辑开发，飞行体按航空器逻辑取证；难点则集中在对接机构可靠性、双平台一致性维护，以及分离/结合过程中的状态安全。</p>
+    <table>
+      <tr><th>层级</th><th>陆行体</th><th>飞行体</th></tr>
+      <tr><td>动力</td><td>800V 碳化硅增程平台，三轴六轮驱动</td><td>纯电六旋翼电推进，高倍率航空电池</td></tr>
+      <tr><td>结构</td><td>越野底盘、空气悬架、后备舱收纳空间</td><td>碳纤维机身与桨叶、折叠机臂、双涵道</td></tr>
+      <tr><td>控制</td><td>道路驾驶辅助、对接自动驾驶定位</td><td>三套飞控/导航冗余、电传操纵、电子围栏</td></tr>
+      <tr><td>能源</td><td>增程续航，兼作移动超充站</td><td>航空动力电池，可由母舰补能</td></tr>
+      <tr><td>外部约束</td><td>道路法规、车辆公告、道路交通环境</td><td>适航审定、空域管理、起降场地与运行许可</td></tr>
+    </table>
+
+    <h3>4.2 分布式电推进与旋翼/涵道布局</h3>
+    <p>飞行体采用六轴六桨双涵道布局：多旋翼布局控制直观、可垂直起降，分布式推进提供一定的动力冗余；涵道设计意在约束桨尖涡流、降低外露桨叶对地面人员的伤害风险。需要区分的是，多旋翼方案巡航效率普遍低于固定翼/复合翼，因此飞行体更适合短途、低速、定点起降任务，而不是长航程高速巡航。</p>
+
+    <h3>4.3 航空动力电池：能量、功率与安全的三角约束</h3>
+    <p>飞行电池要同时满足高能量密度（支撑航程）、高倍率放电（支撑起飞与悬停）与热安全（坠撞、热失控不扩散），其门槛高于普通车用动力电池。行业路线图对 eVTOL 电池的典型目标包括：电芯能量密度 ≥400 Wh/kg、系统 ≥300 Wh/kg；持续放电 ≥5C、峰值 ≥8C；并满足载人航空器灾难性故障率与坠撞安全要求。公开报道称陆地航母飞行电池能量密度约 360 Wh/kg、最大放电功率 25C，按航空级安全标准设计并通过多重热安全验证；但电池循环寿命、低温性能与全工况适航符合性仍需以局方审定资料为准。</p>
+    <div class="note">关键风险：电池在起飞悬停阶段大倍率放电会带来明显热负荷；一旦单体热失控，必须阻止热扩散并维持关键系统供电至安全着陆。电池系统冗余、剩余电量估计与应急降落供电是适航审查的重点。</div>
+
+    <h3>4.4 折叠收纳与自动对接机构</h3>
+    <p>机臂、桨叶折叠后收入后备舱，是分体方案区别于普通 eVTOL 的核心机构。其工程问题包括：折叠铰点的疲劳与锁止可靠性、收纳状态下的振动与防护、分离/结合时的定位精度、机械锁未到位时的互锁禁止起飞，以及长期反复对接后的磨损检测。公开资料给出的分离/结合时间约为数分钟量级，但对接机构的寿命次数、失效模式与维护周期尚未完整披露。</p>
+
+    <h3>4.5 飞控、导航与简化操纵</h3>
+    <p>飞行体配置三套飞控与导航系统，支持手动/自动模式切换与一键起飞、航线规划和自主导航；操纵上采用单杆简化设计，降低学习门槛。对载人航空器而言，真正需要验证的不仅是「能自动起飞」，还包括：传感器交叉校验、多套飞控一致性表决、故障重构与降级航线、链路丢失后的处置，以及驾驶员对模式边界的正确理解。</p>
+  </div>
+</section>
+
+<section id="feasibility">
+  <h2>五、技术可行性分层评估</h2>
+  <div class="card">
+    <p>参考工程评估常用的成熟度思路，把技术可行性拆成四个层级，避免用一次演示飞行覆盖全部运输能力。</p>
+    <div class="level">
+      <div class="step"><div class="h">L1 演示验证</div><div>公开载人首飞、多机试飞、分离结合演示已出现。<br><span class="badge b-demo">已演示</span></div></div>
+      <div class="step"><div class="h">L2 工程化验证</div><div>量产试产下线、电推进批量制造、电池配套推进中；完整测试矩阵与环境耐久仍待公开。<br><span class="badge b-pending">待验证</span></div></div>
+      <div class="step"><div class="h">L3 审定与包线</div><div>TC/PC/OC 尚未全部取得；高度、航时、载荷、风速、高原与全天候包线未完整披露。<br><span class="badge b-pending">待验证</span></div></div>
+      <div class="step"><div class="h">L4 商业运输运行</div><div>受控沙盒试运行已启动；面向公众的常规载人运输运行尚未成立。<br><span class="badge b-block">未成立</span></div></div>
+    </div>
+    <table>
+      <tr><th>能力项</th><th>公开证据</th><th>判定</th></tr>
+      <tr><td>垂直起降与悬停</td><td>公开试飞、多机试飞影像与报道</td><td><span class="badge b-demo">演示可行</span></td></tr>
+      <tr><td>折叠收纳与自动对接</td><td>发布会演示、企业结构图</td><td><span class="badge b-demo">演示可行</span>，机构寿命待验证</td></tr>
+      <tr><td>母舰移动补能</td><td>企业宣称满油满电支持约 6 次飞行</td><td><span class="badge b-pending">口径待核验</span></td></tr>
+      <tr><td>抗风/扰动下自稳定与安全着陆</td><td>未系统披露扰动试验与包线数据</td><td><span class="badge b-pending">待验证</span></td></tr>
+      <tr><td>全天候与长航程运行</td><td>公开航时/高度数据有限，未见完整巡航包线</td><td><span class="badge b-block">未证明</span></td></tr>
+      <tr><td>适航批准下的载人商业运行</td><td>仅受控沙盒与示范区试运行</td><td><span class="badge b-block">未成立</span></td></tr>
+    </table>
+    <h3>5.1 为什么「分体」是一种务实折中</h3>
+    <p>若要求一台车同时满足道路碰撞法规与航空器适航要求，重量、结构与认证负担会叠加；分体后，飞行体只承担空中任务，陆行体承担地面移动与存放。代价是：用户实际上拥有两套需要维护的系统，对接机构成为新的单点风险；飞行体不能独立长距离转场，离开母舰后的活动半径受电池约束。</p>
+  </div>
+</section>
+
+<section id="safety">
+  <h2>六、安全、SOTIF 与适航路径</h2>
+  <div class="card">
+    <h3>6.1 双重标准下的安全对象</h3>
+    <p>陆行体主要面对道路碰撞、制动、电池与电气安全；飞行体面对航空器失效概率、冗余架构、持续适航与运行控制。分体并不等于安全责任分体：对接、补能、分离瞬间以及地面围观区域，都是跨车—机边界的风险点。</p>
+    <h3>6.2 主要风险域与所需证据</h3>
+    <table>
+      <tr><th>风险域</th><th>可能危害</th><th>必须验证的证据</th></tr>
+      <tr><td>动力电池</td><td>热失控、热扩散、大倍率过热、坠撞破损</td><td>热失控不扩散试验、坠撞安全、BMS 冗余、应急供电与防火隔离</td></tr>
+      <tr><td>推进与旋翼</td><td>电机/桨叶失效、推力不对称、卡滞</td><td>动力冗余、故障重构、失效后可控着陆、桨叶防护与检修要求</td></tr>
+      <tr><td>飞控与导航</td><td>传感器冲突、误判位置、链路丢失</td><td>多系统交叉校验、故障注入、降级航线、电子围栏与失联处置</td></tr>
+      <tr><td>对接机构</td><td>锁止不到位、误分离、结构疲劳</td><td>锁止互锁、疲劳寿命、磨损检测、分离/结合安全程序</td></tr>
+      <tr><td>人员与地面风险</td><td>乘员伤害、地面人员进入旋翼区、噪声与气流</td><td>起降隔离区、约束系统、应急撤离、噪声与尾流评估</td></tr>
+      <tr><td>监管身份</td><td>道路车辆身份、航空器类别、运行空域与资质不清</td><td>车辆公告/豁免、航空器审定证件、运行许可、驾驶员资质与保险</td></tr>
+    </table>
+    <h3>6.3 适航进展与制度环境</h3>
+    <ul>
+      <li>国内 eVTOL 审定以民航局专用条件/咨询通告为基础，对分布式电推进、电池安全、坠撞与操控品质提出要求；2026 年 2 月生效的动力提升航空器适航标准，为特定重量与座级的电动分布式推进航空器提供了审定参考。</li>
+      <li>陆地航母飞行体 TC 申请 2024 年受理、PC 申请 2025 年受理，2026 年进入快速合规审查名单；但截至本作业截止日，公开信息未显示 TC 已正式颁发。</li>
+      <li>对比来看，亿航 EH216-S 已在国内取得 TC、PC、AC 三证并具备商业运营资质，可作为国内无人驾驶载人 eVTOL 取证进度的参照系；有人驾驶机型的审定路径与运行要求与此并不完全相同。</li>
+    </ul>
+    <div class="note">SOTIF 提示：很多风险并非来自硬件故障，而是来自场景边界——阵风、低空障碍物、起降场地不达标、用户对自动/手动模式误解、补能状态误判等。需要按「任务—场景—危险—控制措施—验证方法」建立场景清单，而不能只做部件台架测试。</div>
+  </div>
+</section>
+
+<section id="scenario">
+  <h2>七、应用场景评估</h2>
+  <div class="card">
+    <p>技术适配、监管难度与支付意愿需要分开判断。下表为定性评估，不代表精确概率。</p>
+    <table>
+      <tr><th>场景</th><th>技术适配</th><th>监管难度</th><th>支付意愿</th><th>综合判断</th></tr>
+      <tr><td>飞行营地 / 近郊休闲观光</td><td>较高：短途、定点起降、场地可控</td><td>中：受控空域与场地审批</td><td>较高：体验型消费</td><td><span class="badge b-demo">近期最现实</span></td></tr>
+      <tr><td>高端个人体验 / 户外活动载体</td><td>中较高：双座、可收纳转运</td><td>中：需运行资质与保险</td><td>高：高净值客群</td><td><span class="badge b-demo">可试点</span></td></tr>
+      <tr><td>文旅展演 / 品牌活动</td><td>中：对航程要求低，对演示稳定性要求高</td><td>中：临时空域与人员隔离</td><td>较高</td><td><span class="badge b-pending">情境依赖</span></td></tr>
+      <tr><td>应急救援 / 医疗转运</td><td>低：需全天候、载荷与可靠性保障</td><td>高</td><td>高</td><td><span class="badge b-block">暂不适配</span></td></tr>
+      <tr><td>物流运输</td><td>低：双座布局、航程与单位载荷成本不占优</td><td>高</td><td>中</td><td><span class="badge b-block">暂不适配</span></td></tr>
+      <tr><td>城市通勤空中出租车</td><td>低：起降密度、噪声、全天候与航线体系未建立</td><td>极高</td><td>中</td><td><span class="badge b-block">当前不可行</span></td></tr>
+    </table>
+    <h3>7.1 近期成立的场景为什么是营地与休闲</h3>
+    <p>分体方案天然适合「母舰把飞行器带到固定营地，飞行体完成短途体验飞行后收纳返回」的流程：场地净空可控、航线固定、人员隔离容易实现，也避开了城市空域调度与高密度起降场难题。企业已在广州、成都、杭州等地布局飞行营地，与这一场景判断一致。</p>
+    <h3>7.2 为什么不能直接外推到城市通勤</h3>
+    <p>城市空中出租车需要解决 vertiport 网络、噪声社区接受度、全天候运行、高频周转维护、事故责任与空中交通管理；这些是体系能力，不是单机性能提升就能覆盖。双座短途休闲机型与城市航线运力机型在任务剖面、安全目标和成本结构上差异很大。</p>
+  </div>
+</section>
+
+<section id="market">
+  <h2>八、市场可行性分析</h2>
+  <div class="card">
+    <h3>8.1 需求信号：预售是兴趣，不是收入</h3>
+    <p>公开口径显示陆地航母累计预售约 7000 台，其中包含中东地区约 600 台批量协议；定价控制在 200 万元以内，定位个人用户与行业客户。预售与意向订单可以证明早期关注度和高支付意愿客群存在，但不能等同于不可撤销订单、最终交付量或可持续毛利。评估市场时应同时记录订单性质、定金条款、交付窗口、退款条件与实际转化。</p>
+    <h3>8.2 可服务市场的分层估算（教学敏感性框架）</h3>
+    <p>不宜把「低空经济万亿规模」直接乘以市场份额分配给单一车型。更稳妥的拆解是：可服务对象 ≈ 高净值/行业客户基数 × 对分体飞行体验有支付意愿的比例 × 可获得合法运行条件的比例。下表为情景假设，非企业销量预测。</p>
+    <table>
+      <tr><th>情景</th><th>教学假设单价</th><th>年度可交付量</th><th>订单转化率</th><th>年收入量级</th><th>成立条件</th></tr>
+      <tr><td>保守</td><td>180 万元</td><td>200 台</td><td>35%</td><td>约 1.26 亿元</td><td>仅国内少量营地与示范场景，取证节奏偏慢</td></tr>
+      <tr><td>基准</td><td>190 万元</td><td>600 台</td><td>55%</td><td>约 6.27 亿元</td><td>国内多区域受控运行许可，海外示范区扩展，服务网络初步成型</td></tr>
+      <tr><td>积极</td><td>200 万元</td><td>1200 台</td><td>70%</td><td>约 16.8 亿元</td><td>取证顺利、营地网络扩张、中东与海外订单持续落地</td></tr>
+    </table>
+    <div class="note">表中价格、交付量与转化率均为教学敏感性变量，未扣除退货、税费、渠道、保修、保险与事故准备成本；不构成对企业财务表现的预测。</div>
+    <h3>8.3 供给侧成本与配套</h3>
+    <ul>
+      <li><b>双平台维护：</b>用户同时持有地面车辆与航空器，维护、检修、适航检查与备件体系都要覆盖两套系统，单位使用成本高于普通汽车。</li>
+      <li><b>补能与场地：</b>虽有母舰移动补能，但飞行仍需合规起降场地、充电/储能设施、天气窗口与地面保障；营地网络密度决定利用率。</li>
+      <li><b>保险与责任：</b>载人低空运行需要对应的保险产品与责任划分，适航与运营资质落地前，保险条款难以标准化。</li>
+      <li><b>制造爬坡：</b>广州工厂规划年产能 1 万台，2026 年处于试产与产能爬坡阶段；量产一致性、供应链（电池、电推进、碳纤维结构）与质量控制是后续观察重点。</li>
+    </ul>
+    <h3>8.4 替代竞争与公众接受度</h3>
+    <p>潜在替代品包括高端直升机/旋翼体验、专业通航游览、无人机展演、纯 eVTOL 空中游览等。陆地航母的差异化在于「可陆路转运、可收纳、个人拥有」的产品叙事；如果飞行只是短途附加体验，客户更可能为稀缺性与话题付费，而非高频交通需求。公众接受度受安全记录、噪声、隐私、坠落风险与运行公平感共同影响，进入城市公共空间前，社会许可与适航许可同等重要。</p>
+  </div>
+</section>
+
+<section id="compare">
+  <h2>九、竞品横向对比</h2>
+  <div class="card">
+    <table>
+      <tr><th>产品/路线</th><th>构型类别</th><th>验证与取证路径</th><th>主要优势</th><th>主要约束</th></tr>
+      <tr><td>小鹏汇天 陆地航母 X3-F</td><td>分体式：六轮母舰 + 双座多旋翼飞行体</td><td>TC/PC 受理中，受控沙盒试运行，终端交付预计 2027</td><td>陆路转运与收纳便利、母舰补能、个人拥有叙事</td><td>双平台维护、航程有限、适航与场地体系待成熟</td></tr>
+      <tr><td>亿航 EH216-S</td><td>无人驾驶多旋翼载人 eVTOL</td><td>国内 TC/PC/AC 三证齐全，已商业试运行</td><td>取证进度领先、无人驾驶运营、多场景验证</td><td>航程/航时有限、依赖运营场地与调度体系</td></tr>
+      <tr><td>Joby S4 / Archer Midnight</td><td>有人驾驶倾转/复合翼 eVTOL</td><td>围绕 FAA 型号认证与商业航线建设</td><td>面向城市航线巡航效率、航空体系设计</td><td>适航周期长、起降场与基础设施投入大</td></tr>
+      <tr><td>Alef Model A</td><td>整体式可道路行驶飞行汽车概念</td><td>道路与航空双重路径探索</td><td>门到门产品形态叙事</td><td>重量、航程、监管与量产挑战大</td></tr>
+    </table>
+    <p>比较的关键不是「谁飞得更高」，而是各产品是否闭环了自己的验证路径：从航空器出发的企业优先解决适航与运营；从分体车出发的企业优先解决存放、转运与取证分工；概念型整车则承担最大的构型与认证不确定性。</p>
+  </div>
+</section>
+
+<section id="roadmap">
+  <h2>十、从演示走向工程化的 Go / No-Go 判据</h2>
+  <div class="card">
+    <p>若要从试飞演示走向可交付产品，建议按四个门槛跟踪公开证据：</p>
+    <div class="level">
+      <div class="step"><div class="h">Gate 1 飞行包线</div><div>公开空载/满载质量、高度、航时、载荷、风速边界、姿态误差与着陆冲击。</div></div>
+      <div class="step"><div class="h">Gate 2 安全与结构</div><div>电池热失控不扩散、坠撞安全、旋翼/机构疲劳寿命、碰撞与泄压/防火证据。</div></div>
+      <div class="step"><div class="h">Gate 3 故障安全</div><div>单点/多点失效后的冗余重构、降级航线、失联处置、地面人员隔离与互锁。</div></div>
+      <div class="step"><div class="h">Gate 4 审定与运营闭环</div><div>TC/PC/OC 证件、运行空域、起降场地、人员资质、保险与维护周转体系。</div></div>
+    </div>
+    <p>在上述证据未公开到可审计程度之前，更稳妥的结论是：产品处于「工程化与取证并行的早期量产阶段」，而非已经成熟的大众交通工具。对课程研究而言，明确哪些结论尚无证据支撑，比用乐观预期填补空白更专业。</p>
+    <h3>10.1 本作业的局限</h3>
+    <ul>
+      <li>企业未完整披露飞行包线、质量预算、电池循环寿命、对接机构寿命与详细安全分析；</li>
+      <li>媒体报道在订单量、交付时间与参数口径上存在差异，本文以企业与监管口径优先；</li>
+      <li>市场情景表仅为教学敏感性框架，不替代企业财务数据；</li>
+      <li>后续应持续跟踪：TC 颁发进展、第三方独立测试、事故与安全记录、海外示范区运行结果。</li>
+    </ul>
+  </div>
+</section>
+
+<section id="refs">
+  <h2>十一、参考文献与资料来源</h2>
+  <div class="card">
+    <ol class="ref">
+      <li>小鹏汇天 ARIDGE 官网. Land Aircraft Carrier (X3) 产品介绍[EB/OL]. https://intl.aeroht.com/x3.</li>
+      <li>小鹏汽车. 小鹏汇天「陆地航母」飞行汽车海外首秀，计划 2026 年量产交付[EB/OL]. 2025-01-08. https://www.xiaopeng.com/news/company_news/5438.html.</li>
+      <li>36氪. 买车送飞机，价格不超 200 万，「陆地航母」飞行汽车来了[EB/OL]. 2024-09-03. https://m.36kr.com/p/2934159763069824.</li>
+      <li>IT之家. 小鹏「陆地航母」飞行汽车电池量产下线，最大放电功率 25C[EB/OL]. 2026-03-26. https://auto.ithome.com/archiver/0/933/034.htm.</li>
+      <li>新浪财经. 中东「榜一大哥」率团来华提货：接收首架小鹏飞行汽车[EB/OL]. 2026-10-21. https://finance.sina.com.cn/stock/t/2026-10-21/doc-inivyaaw4820000.shtml.</li>
+      <li>新浪科技. 2026 北京国际车展第三天，小鹏汇天陆地航母单日订单破 90 台[EB/OL]. 2026-04-27. https://finance.sina.com.cn/tech/digi/2026-04-27/doc-inhvwscr2606693.shtml.</li>
+      <li>腾讯新闻. 酋长上门「提货」，小鹏这架飞行汽车凭什么？[EB/OL]. 2026-10-29. http://news.qq.com/rain/a/20261029A09NJA00.</li>
+      <li>Venture Atlas. Aridge — Company Profile, Milestones & Funding[EB/OL]. 2026-09-07. https://www.ventureatlas.org/company/aridge.</li>
+      <li>中国民用航空局. 亿航 EH216-S 型无人驾驶航空器系统专用条件（征求意见稿）[S/OL]. 2021. https://app.caac.gov.cn/PHONE/HDJL/YJZJ/202112/P020211203312757258337.pdf.</li>
+      <li>中国民用航空局. 动力提升航空器适航标准 AC-21-AA-2026-45[Z/OL]. 2026-02-12. http://www.caac.gov.cn/XXGK/XXGK/GFXWJ/202602/P020260226344192407264.pdf.</li>
+      <li>工业和信息化部装备工业发展中心. 低空航空器动力电池技术路线图（2025 版）[R/OL]. 2025.</li>
+      <li>亿航智能. EH216-S 适航三证与运营概况[EB/OL]. https://www.ehang.com/cn/about/.</li>
+      <li>宁德时代. 全球首个！350Wh/kg 航空电池通过相邻电芯热失控验证[EB/OL]. 2026-08-09. https://www.catl.com/news/10120.html.</li>
+      <li>PAN G, ALOUINI M-S. Flying Car Transportation System: Advances, Techniques, and Challenges[J]. IEEE Access, 2021, 9: 24586-24603.</li>
+      <li>GOODRICH K H, THEODORE C R. Description of the NASA Urban Air Mobility Maturity Level (UML) Scale[C]//AIAA Scitech 2021 Forum, 2021.</li>
+    </ol>
+    <p class="ref" style="margin-top:10px">AI 使用记录：本网页在课程作业框架下，使用 AI 工具协助整理公开资料、搭建章节结构与排版；研究对象、证据分级判断与结论由作者本人核对整理。图片如后续替换为官方/开源授权素材，请在页面注明来源与许可。</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>刘洁馨 · 吉林大学 · 飞行汽车技术基础课程作业 · 研究对象：小鹏汇天陆地航母分体式飞行汽车 · 证据截止 2026-11-24</p>
+  </div>
+</footer>
+
+</body>
+</html>
